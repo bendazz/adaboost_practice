@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdaBoost Practice — Dataset Viewer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>AdaBoost Practice — Synthetic Dataset</h1>
+      <p class="subtitle">Front-end only · No frameworks</p>
+    </header>
+
+    <main>
+      <section class="controls">
+        <button id="regenBtn" title="Generate a new random dataset">Regenerate dataset</button>
+        <button id="downloadCsvBtn" title="Download the current dataset as CSV">Download CSV</button>
+      </section>
+
+      <section>
+        <div id="tableContainer" class="table-container" aria-live="polite"></div>
+      </section>
+
+      <section class="exercise">
+        <h2>Exercise: Train a decision stump</h2>
+        <ol>
+          <li>Download the dataset as CSV.</li>
+          <li>In Python, train a decision stump on this dataset using scikit-learn (DecisionTreeClassifier with max_depth=1 and random_state=1).</li>
+          <li>Compute the model's training error on the dataset.</li>
+          <li>From that error, determine the decision stump's say.</li>
+        </ol>
+        <div class="exercise-actions">
+          <button id="revealAnswerBtn" title="Reveal the computed answer for this dataset">Reveal answer</button>
+          <span id="answerText" class="answer" aria-live="polite"></span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>
+        Tip: Labels are generated from a linear boundary on features 1 and 2 with slight noise; feature 3 (when present) is extra.
+      </small>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+  </html>
