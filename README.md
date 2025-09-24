@@ -17,4 +17,5 @@ Then visit http://localhost:8000 in your browser and open `index.html`.
 ## Notes
 
 - Labels are derived from a linear boundary on f1 and f2 with a bit of noise; a third feature (f3) may be included as an extra weak signal.
+- The generator includes slight overlap and a small random label flip to reduce cases of perfect separation (which can lead to ±∞ say on very small datasets).
 - Use the "Regenerate dataset" button to get a new random sample. The dataset always contains exactly 15 rows; each regeneration randomly chooses either a 2-feature or 3-feature dataset.

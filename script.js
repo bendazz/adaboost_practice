@@ -22,8 +22,9 @@
     const points = [];
 
     // Parameters for two clusters
-    const clusterA = { cx: -1.0, cy: -0.5, sigma: 0.8 };
-    const clusterB = { cx: 1.2, cy: 0.7, sigma: 0.8 };
+    // Slightly larger sigma increases overlap, reducing chance of perfect separation
+    const clusterA = { cx: -1.0, cy: -0.5, sigma: 1.0 };
+    const clusterB = { cx: 1.2, cy: 0.7, sigma: 1.0 };
 
     // Linear decision boundary: w1 * x1 + w2 * x2 + b > 0 => label 1
     const w1 = 0.9, w2 = -0.7, b = 0.1;
@@ -48,9 +49,13 @@
         x3 = 0.4 * x1 - 0.2 * x2 + (rand() - 0.5) * 0.5;
       }
 
-      // Compute linear score and add small label noise
-      const score = w1 * x1 + w2 * x2 + b + (rand() - 0.5) * 0.2;
-      const y = score > 0 ? 1 : 0;
+  // Compute linear score and add small label noise
+  const score = w1 * x1 + w2 * x2 + b + (rand() - 0.5) * 0.3;
+  let y = score > 0 ? 1 : 0;
+
+  // Introduce a tiny label-flip probability to avoid perfect separability on small samples
+  const pFlip = 0.07; // 7% chance to flip
+  if (rand() < pFlip) y = y === 1 ? 0 : 1;
 
       points.push({ id: i + 1, f1: x1, f2: x2, f3: x3, y });
     }
